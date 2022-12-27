@@ -109,7 +109,37 @@ class circular_single_ll:
             while temp.next != self.head:
                 temp = temp.next
             self.head = self.head.next
-            temp.next = self.head              
+            temp.next = self.head   
+
+
+    #delete_spec_loc
+    def delete_at_loc(self,loc):
+        if self.head== None:
+            print("no elements id present")
+        elif loc==1:
+            if self.head.next == self.head:
+                self.head.next=None
+                self.head=None
+            else:
+                temp=self.head
+                while temp.next != self.head:
+                    temp=temp.next
+                self.head=self.head.next
+                res=self.head.data
+                temp.next=self.head
+        else:
+            temp=self.head
+            cnt=1
+            while temp.next != self.head and cnt < loc-1:
+                temp=temp.next
+                cnt+=1
+            res = temp.next.data
+            temp.next=temp.next.next
+        return res            
+
+
+
+                                  
         
 cll=circular_single_ll()
 while True:
@@ -134,5 +164,8 @@ while True:
             print("Removed Element is -> ", cll.delete_at_last())
         case 7:
             print("Removed Element is -> ", cll.delete_at_begginig())
+        case 8:
+            val=int(input("enter the location"))
+            print("Removed Element is -> ", cll.delete_at_loc(val))
         case _:
             exit()
