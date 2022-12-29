@@ -76,13 +76,31 @@ class circular_double_ll:
             # newnode.next = self.head
             # newnode.prev = self.head.prev
             # self.head = newnode
+
+
+    # delete element at last
+    def delete_ele_last(self):
+        if self.head == None:
+            print(" no elements")
+        elif self.head==self.head.next:
+            self.head.next=None
+            self.head=None
+        else:
+            temp=self.head
+            while temp.next !=self.head:
+                temp = temp.next
+                temp.next =self.head.next
+                self.head=self.head.next
+                self.head.prev=temp
+
+
             
 
 
 cc = circular_double_ll()
 while True:
     print("\n Operations performs on double linked list")
-    print(" 1)Insert ele at last\n 2)Insert ele at first\n 3)Insert ele at loc\n 4)Display\n 5)Length\n 6)Delete at last\n 7)Delete at Beggining\n 8)Delete at location")
+    print(" 1)Insert ele at last\n 2)Insert ele at first\n 3)Insert ele at loc\n 4)Display\n 5)Length\n 6)Delete at last\n 7)Delete at Beggining\n 8)Delete at location\n ")
     opt = int(input("Enter your Options ->"))
     match opt:
         case 1:
@@ -98,6 +116,8 @@ while True:
             cc.display()
         case 5:
             cc.length()
+        case 6:
+            cc. delete_ele_last()  
         case _:
             exit()
 
